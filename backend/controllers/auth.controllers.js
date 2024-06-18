@@ -4,6 +4,7 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const login = async (req, res) => {
   try {
+    console.log("Login");
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     const isPasswordCorrect = await bcrypt.compare(
@@ -20,7 +21,7 @@ export const login = async (req, res) => {
       fullName: user.fullName,
       username: user.username,
       gender: user.gender,
-      profilePic: user.profilePic,
+      profilePic: user.profilepic,
     });
   } catch (error) {
     console.log("Error in Login controller", error.message);
